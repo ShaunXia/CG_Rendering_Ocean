@@ -109,14 +109,24 @@ void main() {
 }
 `;
 // gl_FragColor = textureCube(skybox, vCoords);
-var fShaderCode = `
+var fShaderCode_old= `
 precision mediump float;
 void main() {
         gl_FragColor = vec4(0.118, 0.565, 1.000,1);
 
 }
 `;
+var fShaderCode = `
+precision mediump float; 
+uniform samplerCube skybox;
+varying vec4 vCoords;
 
+
+void main() {
+ vec3 vc = vCoords.xyz;
+    gl_FragColor = textureCube(skybox, vc);
+}
+`;
 var fboxShaderCode = `
 precision mediump float; 
 uniform samplerCube skybox;

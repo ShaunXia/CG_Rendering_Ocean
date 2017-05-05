@@ -454,7 +454,6 @@ function initCallbacks() {
     state.canvas.onmouseup = mouseup;
     state.canvas.onmousemove = mousemove;
 }
-<<<<<<< HEAD
 
 function initEvents() {
 
@@ -556,7 +555,3 @@ function keydown(event) {
     state.ui.mouse.lastX = x;
     state.ui.mouse.lastY = y;
   }
-=======
- 
-// document.getElementById("glcanvas").addEventListener("click",fullscreen)
->>>>>>> origin/master

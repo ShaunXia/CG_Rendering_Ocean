@@ -66,7 +66,7 @@ var main = function() {
       gui.add(text, 'speed', -3.0, 3.0);
       gui.add(text, 'wireframe');
       gui.add(text, 'cubeBox');
-      gui.add(text, 'Shader', { shader1: 2.0, shader2:1.0} );
+//       gui.add(text, 'Shader', { shader1: 2.0, shader2:1.0} );
       gui.add(text, 'Wave', { wave1: 1.0, wave2:2.0,wave3:3.0} );
       gui.add(text, 'MeshResolution', { High: 1.0, Low:2.0} );
       gui.add(text, 'RandomWave');

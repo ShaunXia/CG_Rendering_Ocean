@@ -28,7 +28,8 @@ Third party libraries that I used:
 - For the OpenGL program:
 
   I created the project with Visual Studio 2015 in Windows 10 and the project included all thirh party libraries.
-  Also I've compiled a execuatable file "OceanSurface.exe" you can find it in Release folder.
+  Also I've compiled a execuatable file "OceanSurface.exe" you can find it in "OpenGL-Ocean/Release" folder.
+  https://github.com/ShaunXia/CG_Rendering_Ocean/tree/master/OpenGL-Ocean
   
   __Control:__
   * __A W S D Q E__: Move Camera

@@ -169,7 +169,7 @@ void main() {
 `;
 
 // gl_FragColor = textureCube(skybox, vCoords);
-var fShaderCode = `
+var fShaderCode_old= `
 precision mediump float;
 
 // light properties
@@ -362,7 +362,17 @@ vCoords=aPosition;
     // vTexture_coords = vec2(tex_x, tex_y);
 }
 `;
+var fShaderCode = `
+precision mediump float; 
+uniform samplerCube skybox;
+varying vec4 vCoords;
 
+
+void main() {
+ vec3 vc = vCoords.xyz;
+    gl_FragColor = textureCube(skybox, vc);
+}
+`;
 var fboxShaderCode = `
 precision mediump float; 
 uniform samplerCube skybox;
@@ -444,6 +454,7 @@ function initCallbacks() {
     state.canvas.onmouseup = mouseup;
     state.canvas.onmousemove = mousemove;
 }
+<<<<<<< HEAD
 
 function initEvents() {
 
@@ -545,3 +556,7 @@ function keydown(event) {
     state.ui.mouse.lastX = x;
     state.ui.mouse.lastY = y;
   }
+=======
+ 
+// document.getElementById("glcanvas").addEventListener("click",fullscreen)
+>>>>>>> origin/master

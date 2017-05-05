@@ -26,15 +26,17 @@ var gerstner_sort = [
 const START_X		= -5.0;
 const START_Y		= -5.0;
 const START_Z		= -0.5;
-const LENGTH_X		= 0.1;
-const LENGTH_Y		= 0.1;
+
+var LENGTH_X		= 0.1;
+var LENGTH_Y		= 0.1;
+var STRIP_COUNT	= 1000;
+var STRIP_LENGTH	= 100;
 
 const HEIGHT_SCALE	= 1.6;
 
 const WAVE_COUNT	= 6;
 
-const STRIP_COUNT	= 100;
-const STRIP_LENGTH	= 100;
+
 const DATA_LENGTH	= STRIP_LENGTH*2*(STRIP_COUNT-1);
 
 var pt_strip=[];
@@ -48,6 +50,8 @@ var normal_data=[];
 var maxHeight=-99;
 var minHeight=99;
 var waveType=1;
+var meshResolution=1;
+
 var Wave = function(){
 	this.wave_count=0;
 	this.time=0.0;
@@ -228,30 +232,69 @@ var gerstnerZ=function(w_length, w_height, x_in, gerstner)
 	if(x_in > gerstner[i])
 		return ((gerstner[i+3]-gerstner[i+1]) * (x_in-gerstner[i]) / (gerstner[i+2]-gerstner[i]) + gerstner[i+3]) * yScale;
 }
-
+var count=0;
+var rand1,rand2;
+var keep=0;
 var getWateStrip = function()
 {
 	//wave_length, wave_height, wave_dir, wave_speed, wave_start.x, wave_start.y
 	if (waveType==1.0) {
 wave_para = [
-	[	1.6,	0.12,	0.9,	0.06,	0.0,	0.0	],
-	[	1.3,	0.1,	1.14,	0.09,	0.0,	0.0	],
-	[	0.2,	0.01,	0.8,	0.08,	0.0,	0.0	],
+	[	1.6,	0.41,	0.9,	0.06,	0.0,	0.0	],
+	[	0.3,	0.03,	1.14,	0.09,	0.0,	0.0	],
+	[	0.2,	0.02,	0.8,	0.08,	0.0,	0.0	],
 	[	0.18,	0.008,	1.05,	0.1,	0.0,	0.0	],
 	[	0.23,	0.005,	1.15,	0.29,	0.0,	0.0	],
 	[	0.12,	0.003,	0.97,	0.14,	0.0,	0.0	]
 ];
 }
+else if(waveType==3.0)
+{
+	if(count>30||count==0||keep==1)
+	{
+		rand1=Math.random()/1;
+		rand2 =Math.random()/5;
+		rand3 =Math.random()/10;
+		rand4 =Math.random()/15;
+		rand5 =Math.random()/50;
+	count=1;
+	keep=2;
+	}
+	if(keep==0)
+		++count;
+	wave_para = [
+	[	1.3,	0.22,	0.9,	0.06,	0.3,	0.35	],
+	[	3.5,	rand1,	1.14,	0.09,	5.0,	1.5	],
+	[	0.2,	rand2,	-0.8,	0.28,	2.0,	0.02	],
+	[	1.18,	rand3,	1.05,	0.15,	0.2,	0.0	],
+	[	1.23,	rand4,	-0.15,	0.29,	0.0,	0.2	],
+	[	0.12,	rand5,	0.97,	0.14,	0.03,	0.0	]
+];
+}
 else
 	wave_para = [
-	[	1.3,	0.12,	0.9,	0.06,	0.3,	0.0	],
-	[	0.5,	0.1,	1.14,	0.09,	1.0,	1.5	],
-	[	0.2,	0.01,	-0.8,	0.08,	2.0,	0.02	],
-	[	1.18,	0.028,	1.05,	0.1,	0.2,	0.0	],
-	[	1.23,	0.005,	-0.15,	0.29,	0.0,	0.2	],
-	[	0.12,	0.003,	0.97,	0.14,	0.03,	0.0	]
+	[	1.6,	0.21,	0.9,	0.06,	0.0,	0.0	],
+	[	0.3,	0.03,	1.14,	0.09,	0.0,	0.0	],
+	[	0.2,	0.02,	0.8,	0.08,	0.0,	0.0	],
+	[	0.18,	0.008,	1.05,	0.1,	0.0,	0.0	],
+	[	0.23,	0.005,	1.15,	0.29,	0.0,	0.0	],
+	[	0.12,	0.003,	0.97,	0.14,	0.0,	0.0	]
 ];
 
+if(meshResolution==1.0)
+{
+LENGTH_X		= 0.1;
+LENGTH_Y		= 0.1;
+STRIP_COUNT	= 100;
+STRIP_LENGTH	= 100;
+}
+else
+{
+LENGTH_X		= 1;
+LENGTH_Y		= 1;
+STRIP_COUNT	= 10;
+STRIP_LENGTH	= 100;
+}
 	initWave();
 	calculWave();
 	// console.log(vertex_data);

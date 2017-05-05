@@ -43,6 +43,10 @@ var FizzyText = function() {
   this.cubeBox = true;
   this.Shader=2.0;
   this.Wave=1.0;
+  this.MeshResolution=1.0;
+  this.RandomWave = function(){
+    keep=1;
+  };
   // this.explode = function() { ... };
   // Define render logic ...
 };
@@ -63,7 +67,9 @@ var main = function() {
       gui.add(text, 'wireframe');
       gui.add(text, 'cubeBox');
       gui.add(text, 'Shader', { shader1: 2.0, shader2:1.0} );
-      gui.add(text, 'Wave', { wave1: 1.0, wave2:2.0} );
+      gui.add(text, 'Wave', { wave1: 1.0, wave2:2.0,wave3:3.0} );
+      gui.add(text, 'MeshResolution', { High: 1.0, Low:2.0} );
+      gui.add(text, 'RandomWave');
 
     state.canvas = document.getElementById("glcanvas");
     state.gl=state.canvas.getContext("webgl");
@@ -209,6 +215,7 @@ var mvpBoxMatrix = mat4.create();
 function draw(args) {
     shaderSet=text.Shader;
     waveType=text.Wave;
+    meshResolution=text.MeshResolution;
     state.gl.useProgram(state.program);
     
     //state.gl.uniform1i(u_TextureN, 1);

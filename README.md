@@ -49,7 +49,11 @@ Third party libraries that I used:
 - Also in the Extra part, I have implemented all the above points.
 ## Screencast:
 - Gerstner-wave in WebGL:
+  https://youtu.be/tPR6p5JHe1s
+  
 - iFFT version in OpenGL:
+  https://youtu.be/gzeTRfo80PQ
+  
 ### Reference: ###
 - WebGL Fundamentals - https://webglfundamentals.org/webgl/lessons/
 - Learn OpenGL - https://learnopengl.com/#!Introduction

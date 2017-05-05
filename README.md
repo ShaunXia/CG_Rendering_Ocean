@@ -46,7 +46,7 @@ Third party libraries that I used:
 - (35%)implement 3D water surface mesh based on the height-map generated from Gerstner function.
 - (20%)Add materials, lights, reflection, Fresnel term and animation, with some minor adjustment, removed fresnel term and added ward model as specular term.
 - (15%)For more realistic ocean surface, add Bump Mapping to gain more details and high frequent waves.Also setup input parameters like wind direction,  length of waves, speed and amplitude. When implement the project I realized that bump mapping not vary useful in my project, so I added texture insead. Also added Skybox, and tried environment mapping, but with bad result, I just removed environment mapping.
-- (25%)More efficient and more realistic way to generate height-map -  inverse Fast Fourier Transformation(iFFT)
+- ***Extra Points***(25%)More efficient and more realistic way to generate height-map -  inverse Fast Fourier Transformation(iFFT)
 - Also in the Extra part, I have implemented all the above points.
 ## Screencast:
 - Gerstner-wave in WebGL:

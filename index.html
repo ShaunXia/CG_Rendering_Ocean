@@ -10,7 +10,7 @@
 
   <body onload="main();">
 
-    <canvas id="glcanvas" width="512" height="512" ></canvas>
+    <canvas id="glcanvas" width="2048" height="512" ></canvas>
     
     <!-- Shaders -->
     <script name="shader" data-src="shaders/vertex.glsl" data-type="vertex" data-version="v1"></script>
@@ -19,7 +19,7 @@
     <!-- Library: Signals processing used for dispatching methods -->
     <script type="text/javascript" src="vendor/signals.js"></script>
     <script type="text/javascript" src="vendor/glMatrix.js"></script>
-
+    <script type="text/javascript" src="vendor/dat.gui.min.js"></script>
 
     <!-- Library: our common libraries -->
     <script type="text/javascript" src="libs/glUtils.js"></script>
@@ -29,5 +29,7 @@
 
     <!-- This is the bulk of the actual WebGL stuff -->
     <script type="text/javascript" src="index.js"></script>
+
+
   </body>
 </html>

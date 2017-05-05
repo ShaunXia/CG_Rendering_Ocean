@@ -254,9 +254,10 @@ if(shaderSet==1.0)
     //Ambient
     globalAmt = ambientFactor * uLightAmbient*NdotL;
 
-    float relativeHeight;   // from 0 to 1
-    relativeHeight = (vWorldPos.z - heightMin) / (heightMax - heightMin);
-    vec3 heightColor = relativeHeight * shallowColor + (1.0 - relativeHeight) * deepColor;
+    //for water
+    float waterHeight;
+    waterHeight = (vWorldPos.z - heightMin) / (heightMax - heightMin);
+    vec3 heightColor = (1.0 - waterHeight) * deepColor + waterHeight * shallowColor ;
 
 
     //Disfuse
@@ -320,9 +321,8 @@ if(shaderSet==1.0)
 
     vec4 skyColor = vec4(0.65, 0.80, 0.95,1.0);
 
-    float directionalLightWeighting = max(dot(normal_vector1, light_vector1), 0.0);
 
-    float refCoeff = pow(max(dot(normal_vector1, eye_vector1), 0.0), 0.8);    // Smaller power will have more concentrated reflect.
+    float refCoeff = pow(max(dot(normal_vector1, eye_vector1), 0.0), 0.8);    
     vec4 reflectColor = (1.0 - refCoeff) * skyColor;
 
     //Specular

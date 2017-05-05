@@ -125,14 +125,14 @@ function setupWaveTextures(gl) {
     iTexture.image.onload = function() {
         handleLoadedTexture(gl,iTexture);
     };
-    iTexture.image.src = "/img/water-texture-2_.jpg";
+    iTexture.image.src = "./img/water-texture-2_.jpg";
 
     nTexture.image = new Image();
     nTexture.image.onload = function() {
         handleLoadedTexture(gl,nTexture);
     };
 
-    nTexture.image.src = "/img/water-texture-2-normal.jpg";
+    nTexture.image.src = "./img/water-texture-2-normal.jpg";
 
 }
 
@@ -169,7 +169,7 @@ void main() {
 `;
 
 // gl_FragColor = textureCube(skybox, vCoords);
-var fShaderCode_old= `
+var fShaderCode = `
 precision mediump float;
 
 // light properties
@@ -333,7 +333,7 @@ if(shaderSet==1.0)
 
     fragcolor = fragcolor+fragcolor*wd;
     fragcolor.a=1.0;
-    gl_FragColor = vec4(normal_vector1,1.0);
+    gl_FragColor = fragcolor;
 }
 }
 `;
@@ -362,17 +362,7 @@ vCoords=aPosition;
     // vTexture_coords = vec2(tex_x, tex_y);
 }
 `;
-var fShaderCode = `
-precision mediump float; 
-uniform samplerCube skybox;
-varying vec4 vCoords;
 
-
-void main() {
- vec3 vc = vCoords.xyz;
-    gl_FragColor = textureCube(skybox, vc);
-}
-`;
 var fboxShaderCode = `
 precision mediump float; 
 uniform samplerCube skybox;
